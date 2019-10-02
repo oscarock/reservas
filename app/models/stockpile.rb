@@ -1,0 +1,2 @@
+class Stockpile < ApplicationRecord
+end
