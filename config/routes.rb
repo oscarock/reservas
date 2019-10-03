@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'movie/index'
-  get 'movie/create'
-  get 'movie/new'
-  get 'movie/destroy'
-  get 'movie/show'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #namespace :api, defaults: { format: "json" } do
+    #namespace :v1 do
+      resources :movies, :except => [:new, :edit, :update, :destroy]
+      resources :stockpiles, :except => [:new, :edit, :update, :destroy, :show]
+      get 'validate/:id', to: 'stockpiles#validate', as: 'validate'
+    #end
+  #end
 end
