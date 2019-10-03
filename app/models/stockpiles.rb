@@ -4,4 +4,7 @@ class Stockpiles < ApplicationRecord
 	validates :document, presence: true
     validates :email, presence: true
     validates :movie_id, presence: true
+
+    #relationship
+    belongs_to :movies
 end

@@ -4,7 +4,7 @@ class CreateStockpiles < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :document
       t.string :email
-      t.belongs_to :movie, index: true, foreign_key: true
+      t.belongs_to :movies, index: true, foreign_key: true
       t.timestamps
     end
   end
