@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2019_10_02_193940) do
     t.string "name"
     t.string "document"
     t.string "email"
-    t.bigint "movie_id"
+    t.bigint "movies_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["movie_id"], name: "index_stockpiles_on_movie_id"
+    t.index ["movies_id"], name: "index_stockpiles_on_movie_id"
   end
 
   add_foreign_key "stockpiles", "movies"
