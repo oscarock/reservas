@@ -3,7 +3,7 @@ class Stockpiles < ApplicationRecord
 	validates :name, presence: true
 	validates :document, presence: true
     validates :email, presence: true
-    validates :movie_id, presence: true
+    validates :movies_id, presence: true
 
     #relationship
     belongs_to :movies

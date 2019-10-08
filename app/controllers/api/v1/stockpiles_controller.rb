@@ -4,7 +4,7 @@ module Api
       protect_from_forgery except: :create
 
       def index
-        @stockpiles = Stockpiles.joins(:movies).select('stockpiles.id','stockpiles.name','stockpiles.email','movies.name as movie', 'movies.created_at')
+        @stockpiles = Stockpiles.joins(:movies).select('stockpiles.id','stockpiles.name','stockpiles.email', 'stockpiles.document' ,'movies.name as movie', 'movies.created_at')
         render json: @stockpiles
       end
 
@@ -12,14 +12,14 @@ module Api
         @stockpile = Stockpiles.new(stockpile_params)
 
         if @stockpile.save
-          render json: @stockpile, status: :created, location: @stockpile
+          render json: @stockpile, status: :created
         else
           render json: @stockpile.errors, status: :unprocessable_entity
         end
       end
 
       def validate
-        @stockpiles = Stockpiles.where("movie_id = ?", params[:id]).count 
+        @stockpiles = Stockpiles.where("movies_id = ?", params[:id]).count 
         if @stockpiles == 10
           @result = {
             message: "Capacidad Llena",
@@ -37,7 +37,7 @@ module Api
       private
 
       def stockpile_params
-        params.require(:stockpile).permit(:name, :document, :email, :movie_id)
+        params.require(:stockpile).permit(:name, :document, :email, :movies_id)
       end
     end
   end
